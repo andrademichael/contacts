@@ -2,10 +2,10 @@ class Phone
   @@phones = []
   attr_reader :id, :phone_number, :phone_type
 
-  define_method(:initialize) do |phone, type|
+  define_method(:initialize) do |attributes|
     @id = @@phones.length + 1
-    @phone_number = phone
-    @phone_type = type
+    @phone_number = attributes.fetch(:phone_number)
+    @phone_type = attributes.fetch(:phone_type)
   end
 
   define_method(:save) do

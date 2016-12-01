@@ -3,10 +3,10 @@ class Email
   attr_reader :id, :email_address, :email_type
   @@emails = []
 
-  define_method(:initialize) do |email, type|
+  define_method(:initialize) do |attributes|
     @id = @@emails.length + 1
-    @email_address = email
-    @email_type = type
+    @email_address = attributes.fetch(:email_address)
+    @email_type = attributes.fetch(:email_type)
   end
 
   define_method(:save) do

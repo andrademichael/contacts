@@ -1,3 +1,12 @@
+require('sinatra')
+require('sinatra/reloader')
+require('./lib/contact')
+require('./lib/address')
+require('./lib/email')
+require('./lib/phone')
+require('pry')
+also_reload('lib/**/*.rb')
+
 post("/create") do
 # Form input fields
   #Contact parameters
@@ -12,20 +21,20 @@ post("/create") do
   @new_city = params.fetch("city_input")
   @new_state = params.fetch("state_input")
   @new_zip = params.fetch("zip_input")
-  @new_address = Address.new({@new_street, @new_city, @new_state, @new_zip})
+  @new_address = Address.new({:street=> @new_street, :city=> @new_city, :state=> @new_state, :zip=> @new_zip})
 
     #Email Params
   @new_email_address = params.fetch("email_input")
   @new_email_type = params.fetch("email_type_input")
-  @new_email = Email.new({@new_email_address, @new_email_type})
+  @new_email = Email.new({:email_address=> @new_email_address, :email_type=> @new_email_type})
 
     #Phone Params
   @new_phone_number = params.fetch("phone_input")
   @new_phone_type = params.fetch("phone_type_input")
-  @new_phone = Phone.new({@new_phone_number, @new_phone_type})
+  @new_phone = Phone.new({:phone_number=> @new_phone_number, :phone_type=> @new_phone_type})
 
     #New Contact Object
-  Contact.new({@new_first, @new_last, @new_job_title, @new_address, @new_email, @new_phone})
+  Contact.new({:first_name=> @new_first, :last_name=> @new_last, :job_title=> @new_job_title, :address=> @new_address, :email=> @new_email, :phone=> @new_phone})
 
   erb(:success)
 end
