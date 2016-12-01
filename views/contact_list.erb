@@ -1,0 +1,6 @@
+<ul id="contactsList">
+  <% @contacts.each do |contact| %>
+    <li><a href="/contact_view/<%= contact.id %>"><%= contact.first_name + " " + contact.last_name %></a></li>
+</ul>
+
+<a href="/">Create another contact?</a>

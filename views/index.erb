@@ -1,0 +1,38 @@
+<h2>New Contact:</h2>
+
+<form class="form-group" action="/create" method="post">
+  <label for="first_input">First Name:</label>
+  <input class="form-control" type="text" name="first_input">
+  <label for="last_input">Last Name:</label>
+  <input class="form-control" type="text" name="last_input">
+  <label for="title_input">Title:</label>
+  <input class="form-control" type="text" name="title_input">
+
+  <!-- Address -->
+  <div class="form-group">
+    <h4>Address:</h4>
+    <label for="street_input">Street:</label>
+    <input class="form-control" type="text" name="street_input">
+    <label for="city_input">City:</label>
+    <input class="form-control" type="text" name="city_input">
+    <label for="state_input">State:</label>
+    <input class="form-control" type="text" name="state_input">
+    <label for="zip_input">Postal Code:</label>
+    <input class="form-control" type="text" name="zip_input">
+  </div>
+  <!-- Email -->
+  <div class="form-group">
+    <label for="email_input">Email Address:</label>
+    <input class="form-control" type="text" name="email_input">
+    <label for="email_type_input">Type of Email(work, personal, etc.):</label>
+    <input class="form-control" type="text" name="email_type_input">
+  </div>
+  <!-- Phone -->
+  <div class="form-group">
+    <label for="phone_input">Phone Number:</label>
+    <input class="form-control" type="text" name="phone_input">
+    <label for="phone_type_input">Type of Phone Number:</label>
+    <input class="form-control" type="text" name="phone_type_input">
+  </div>
+  <button type="submit" name="contact_form_submit">Create Contact!</button>
+</form>

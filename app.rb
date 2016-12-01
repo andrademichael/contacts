@@ -1,4 +1,4 @@
-post(/create) do
+post("/create") do
 # Form input fields
   #Contact parameters
 
@@ -26,4 +26,15 @@ post(/create) do
 
     #New Contact Object
   Contact.new({@new_first, @new_last, @new_job_title, @new_address, @new_email, @new_phone})
+
+  erb(:success)
+end
+
+get("/") do
+  erb(:index)
+end
+
+get("/contact_list") do
+  @contacts = Contact.all
+  erb(:contact_list)
 end
