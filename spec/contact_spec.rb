@@ -2,6 +2,7 @@ require('rspec')
 require('contact')
 require('address')
 require('email')
+require('phone')
 
 
 describe(Contact) do
@@ -74,6 +75,7 @@ describe(Address) do
   end
 
 end
+
 describe(Email) do
 
   test_email1 = Email.new("andrade.michael.e@gmail.com", "professional")
@@ -102,6 +104,39 @@ describe(Email) do
   describe('.all') do
     it('returns an array of all emails') do
       expect(Email.all()).to(eq([]))
+    end
+  end
+
+end
+
+describe(Phone) do
+
+  test_phone1 = Phone.new("5035555555", "work")
+
+  before() do
+    Phone.clear()
+  end
+
+  it("creates a new Phone object and sets its attributes") do
+    expect(test_phone1.phone_number).to(eq("5035555555"))
+    expect(test_phone1.phone_type).to(eq("work"))
+  end
+
+  describe('#save') do
+    it("save new Phone object to the emails array") do
+      expect(test_phone1.save()).to(eq([test_phone1]))
+    end
+  end
+
+  describe('.clear') do
+    it("clears and returns empty emails array") do
+      expect(Phone.clear()).to(eq([]))
+    end
+  end
+
+  describe('.all') do
+    it('returns an array of all emails') do
+      expect(Phone.all()).to(eq([]))
     end
   end
 
