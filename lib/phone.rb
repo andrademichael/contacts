@@ -1,8 +1,9 @@
 class Phone
   @@phones = []
-  attr_reader :phone_number, :phone_type
+  attr_reader :id, :phone_number, :phone_type
 
   define_method(:initialize) do |phone, type|
+    @id = @@phones.length + 1
     @phone_number = phone
     @phone_type = type
   end

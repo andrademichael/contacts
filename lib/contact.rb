@@ -1,13 +1,16 @@
 class Contact
 
   @@contacts = []
-  attr_reader :first_name, :last_name, :job_title
+  attr_reader :id, :first_name, :last_name, :job_title, :address, :email, :phone
 
-  define_method(:initialize) do |first, last, title|
-    @first_name = first
-    @last_name = last
-    @job_title = title
-    # @id = @@contacts.length + 1
+  define_method(:initialize) do |attributes|
+    @id = @@contacts.length + 1
+    @first_name = attributes.fetch(:first_name)
+    @last_name = attributes.fetch(:last_name)
+    @job_title = attributes.fetch(:job_title)
+    @address = attributes.fetch(:address)
+    @email = attributes.fetch(:email)
+    @phone = attributes.fetch(:phone)
   end
 
   define_method(:save) do

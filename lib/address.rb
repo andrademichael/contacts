@@ -1,14 +1,15 @@
 class Address
 
   @@addresses = []
-  attr_reader :street, :city, :state, :zip
+  attr_reader :id, :street, :city, :state, :zip
 
 
-  define_method(:initialize) do |street, city, state, zip|
-    @street = street
-    @city = city
-    @state = state
-    @zip = zip
+  define_method(:initialize) do |attributes|
+    @id = @@addresses.length + 1
+    @street = attributes.fetch(:street)
+    @city = attributes.fetch(:city)
+    @state = attributes.fetch(:state)
+    @zip = attributes.fetch(:zip)
   end
 
   define_method(:save) do

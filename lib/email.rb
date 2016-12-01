@@ -1,9 +1,10 @@
 class Email
 
+  attr_reader :id, :email_address, :email_type
   @@emails = []
-  attr_reader :email_address, :email_type
 
   define_method(:initialize) do |email, type|
+    @id = @@emails.length + 1
     @email_address = email
     @email_type = type
   end
