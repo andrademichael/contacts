@@ -13,9 +13,9 @@ describe(Contact) do
 
   describe('#initialize') do
     it("creates a new Contact object and sets its attributes") do
-      test_contact1 = Contact.new("Michael", "Andrade", "Space Cowboy")
+      test_contact1 = Contact.new({:first_name=> "Michael", :last_name=> "Andrade", :job_title=> "Space Cowboy"})
       test_contact1.save
-      test_contact2 = Contact.new("Caitlin", "Ashtari", "Space Cowgirl")
+      test_contact2 = Contact.new({:first_name=> "Caitlin", :last_name=> "Ashtari", :job_title=> "Space Cowgirl"})
       test_contact2.save
 
       expect(test_contact1.id).to(eq(1))
@@ -28,7 +28,7 @@ describe(Contact) do
 
   describe('#save') do
     it("save new Contact object to the contacts array") do
-      test_contact1 = Contact.new("Michael", "Andrade", "Space Cowboy")
+      test_contact1 = Contact.new({:first_name=> "Michael", :last_name=> "Andrade", :job_title=> "Space Cowboy"})
 
       expect(test_contact1.save()).to(eq([test_contact1]))
     end
@@ -36,7 +36,7 @@ describe(Contact) do
 
   describe('.clear') do
     it("clears and returns empty contacts array") do
-      test_contact1 = Contact.new("Michael", "Andrade", "Space Cowboy")
+      test_contact1 = Contact.new({:first_name=> "Michael", :last_name=> "Andrade", :job_title=> "Space Cowboy"})
 
       expect(Contact.clear()).to(eq([]))
     end
@@ -44,19 +44,29 @@ describe(Contact) do
 
   describe('.all') do
     it('returns an array of all contacts') do
-      test_contact1 = Contact.new("Michael", "Andrade", "Space Cowboy")
+      test_contact1 = Contact.new({:first_name=> "Michael", :last_name=> "Andrade", :job_title=> "Space Cowboy"})
       test_contact1.save
-      test_contact2 = Contact.new("Caitlin", "Ashtari", "Space Cowgirl")
+      test_contact2 = Contact.new({:first_name=> "Caitlin", :last_name=> "Ashtari", :job_title=> "Space Cowgirl"})
       test_contact2.save
 
       expect(Contact.all()).to(eq([test_contact1, test_contact2]))
+    end
+  end
+
+  describe('.find') do
+    it('loops through all contacts and returns the object with matching id') do
+      test_contact1 = Contact.new({:first_name=> "Michael", :last_name=> "Andrade", :job_title=> "Space Cowboy"})
+      test_contact1.save
+      test_contact2 = Contact.new({:first_name=> "Caitlin", :last_name=> "Ashtari", :job_title=> "Space Cowgirl"})
+      test_contact2.save
+      expect(@@contacts.find(2)).to(eq(test_contact2))
     end
   end
 end
 
 describe(Address) do
 
-  test_address1 = Address.new("400 SW 6th St", "Portland", "OR", "97204")
+  test_address1 = Address.new({:street=> "400 SW 6th St", :city=> "Portland", :state=> "OR",:zip=> "97204"})
 
   before() do
     Address.clear()
@@ -96,7 +106,7 @@ end
 
 describe(Email) do
 
-  test_email1 = Email.new("andrade.michael.e@gmail.com", "professional")
+  test_email1 = Email.new({:email_address=> "andrade.michael.e@gmail.com", :email_type=> "professional"})
 
   before() do
     Email.clear()
