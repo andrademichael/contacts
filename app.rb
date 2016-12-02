@@ -34,8 +34,8 @@ post("/create") do
   @new_phone = Phone.new({:phone_number=> @new_phone_number, :phone_type=> @new_phone_type})
 
     #New Contact Object
-  Contact.new({:first_name=> @new_first, :last_name=> @new_last, :job_title=> @new_job_title, :address=> @new_address, :email=> @new_email, :phone=> @new_phone})
-
+  @new_contact = Contact.new({:first_name=> @new_first, :last_name=> @new_last, :job_title=> @new_job_title, :address=> @new_address, :email=> @new_email, :phone=> @new_phone})
+  @new_contact.save
   erb(:success)
 end
 
@@ -46,4 +46,8 @@ end
 get("/contact_list") do
   @contacts = Contact.all
   erb(:contact_list)
+end
+
+get("/contact_view/:id") do
+  erb(:contact_view)
 end

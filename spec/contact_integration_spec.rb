@@ -22,12 +22,17 @@ describe('the Contact page', {:type => :feature}) do
   end
 end
 
-describe('the Success page', {:type => :feature}) do
-  it('displays a success message and two links') do
+describe('the Success page, which displays a success message and two links', {:type => :feature}) do
+  it('the create another contact link takes the user to index') do
     visit('/')
     click_button("Create Contact!")
     click_link("Create another contact?")
     expect(page).to have_content("New Contact")
   end
-
+  it('takes user to the contact_list view when "View all contacts" is clicked') do
+    visit('/')
+    click_button("Create Contact!")
+    click_link("View all contacts?")
+    expect(page).to have_content("Contact List")
+  end
 end
