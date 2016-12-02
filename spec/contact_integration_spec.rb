@@ -21,3 +21,13 @@ describe('the Contact page', {:type => :feature}) do
     expect(page).to have_content('Success!')
   end
 end
+
+describe('the Success page', {:type => :feature}) do
+  it('displays a success message and two links') do
+    visit('/')
+    click_button("Create Contact!")
+    click_link("Create another contact?")
+    expect(page).to have_content("New Contact")
+  end
+
+end
